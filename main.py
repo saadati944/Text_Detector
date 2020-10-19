@@ -1,5 +1,8 @@
 from os import system,name
-import database
+import database, process
+import random
+
+changes=''
 
 
 #clear screen
@@ -20,6 +23,7 @@ def menu():
 
 
 def main():
+    global changes
     database.load()
     while True:
         clear()
@@ -27,6 +31,32 @@ def main():
         ans=input('your choice : ')
         if ans=='e':
             exit()
+        elif ans=='a':
+            pth=input('enter file name to add to database : ')
+            with open(pth,'r',encoding='utf-8') as f:
+                cat=input('category name : ')
+                database.addCountedWords(process.count(f.read()),cat)
+                changes+=f'Add {pth} to database[{cat}].\n'
+                input('new file added successfully\npress enter to continue ...')
+        elif ans =='d':
+            rnd=random.random()
+            if input(f"enter '{rnd}' to continue : ")!=str(rnd):
+                print('not equal !!!')
+                input('press enter to continue ...')
+                continue
+            database.dump()
+            input('ok\npress enter to continue ...')
+        elif ans=='l':
+            if changes=='':
+                input('no changes detected !!!\npress enter to continue ...')
+                continue
+            rnd=random.random()
+            if input(f"enter '{rnd}' to continue : ")!=str(rnd):
+                print('not equal !!!')
+                input('press enter to continue ...')
+                continue
+            database.load()
+            input('ok\npress enter to continue ...')
 
 if __name__=='__main__':
     main()
