@@ -17,6 +17,7 @@ def menu():
     print(' d\t:\tdump database')                       #v
     print(' l\t:\tload database (ignore changes)')      #v
     print(' w\t:\twipe database')                       #v
+    print(' c\t:\tshow avaliable categories')           #v
     print()
 
 def help():

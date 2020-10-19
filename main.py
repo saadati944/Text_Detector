@@ -81,6 +81,12 @@ def main():
                 print(f'{cat}\t:\t{scores[cat]}')
             print()
             input('\npress enter to continue ...')
+        elif ans =='c':
+            print()
+            for k in database.database.keys():
+                print(k)
+            print()
+
 
 if len(sys.argv)!=0:
     execargs()
