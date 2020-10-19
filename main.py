@@ -2,6 +2,31 @@ import database, process, funcs
 import sys, os
 
 
+if sys.argv[0]==__file__:
+    sys.argv.pop(0)
+
+def execargs():
+    if sys.argv[0]=='-h' or sys.argv[0]=='--help' :
+        help()
+    elif sys.argv[0]=='-c':
+        database.load()
+        for k in database.database.keys():
+            print(k)
+    elif sys.argv[0]=='-w':
+        if not funcs.areUsure():
+            print ('failed')
+        database.database={}
+        database.dump()
+        print('\nok\n')
+    elif sys.argv[0]=='-a' and len(sys.argv)==3 and os.path.exists(sys.argv[2]):
+        database.load()
+        with open(sys.argv[2] ,'r' ,encoding='utf-8') as f:
+            database.addCountedWords(process.count(f.read()),sys.argv[1])
+        database.dump()
+        print('\nok\n')
+    elif sys.argv[0]=='-p' and len(sys.argv)==2 and os.path.exists(sys.argv[1]):
+        scores=process.getscores(sys.argv[1])
+    
 
 changes=''
 
@@ -53,5 +78,7 @@ def main():
             print()
             input('\npress enter to continue ...')
 
-if __name__=='__main__':
+if len(sys.argv)!=0:
+    execargs()
+elif __name__=='__main__':
     main()
