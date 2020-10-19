@@ -1,4 +1,6 @@
 from os import system,name
+import database
+
 
 #clear screen
 def clear():
@@ -13,11 +15,18 @@ def menu():
     print(' a\t:\tadd new file to database')
     print(' d\t:\tdump database')
     print(' l\t:\tload database (ignore changes)')
+    print(' w\t:\twipe database')
     print()
 
-while True:
-    clear()
-    menu()
-    ans=input('your choice : ')
-    if ans=='e':
-        exit()
+
+def main():
+    database.load()
+    while True:
+        clear()
+        menu()
+        ans=input('your choice : ')
+        if ans=='e':
+            exit()
+
+if __name__=='__main__':
+    main()
