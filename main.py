@@ -25,7 +25,11 @@ def execargs():
         database.dump()
         print('\nok\n')
     elif sys.argv[0]=='-p' and len(sys.argv)==2 and os.path.exists(sys.argv[1]):
+        database.load()
         scores=process.getscores(sys.argv[1])
+        for cat in scores.keys():
+            print(f'{cat}\t:\t{scores[cat]}')
+
     
 
 changes=''
