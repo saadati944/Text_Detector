@@ -24,9 +24,9 @@ def help():
     print('\nusage : main.py operand [params]')
     print('\noperands:')
     print(' -p FILENAME\t:\tprocess new text file')
-    print(' -a CATEGORY FILENAME\t:\tadd new file to database')
-    print(' -w\t\t:\twipe database\n')
-    print(' -c\t\t:\tshow avaliable categories\n')
+    print(' -w\t\t:\twipe database')
+    print(' -c\t\t:\tshow avaliable categories')
+    print(' -a CATEGORY FILENAME\t:\tadd new file to database\n')
 
 def areUsure():
     rnd=random.random()

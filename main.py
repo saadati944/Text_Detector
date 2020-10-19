@@ -6,8 +6,8 @@ if sys.argv[0]==__file__:
     sys.argv.pop(0)
 
 def execargs():
-    if sys.argv[0]=='-h' or sys.argv[0]=='--help' :
-        help()
+    if sys.argv[0]=='-h' or sys.argv[0]=='--help' or sys.argv[0]=='/?':
+        funcs.help()
     elif sys.argv[0]=='-c':
         database.load()
         for k in database.database.keys():
