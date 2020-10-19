@@ -43,7 +43,14 @@ def main():
         funcs.menu()
         ans=input('your choice : ')
         if ans=='e':
-            exit()
+            if changes=='':
+                exit()
+            q=input('there are some unsaved changes. do you want to save them ??? (y/n)')
+            if q=='n':
+                exit()
+            elif q=='y':
+                database.dump()
+                exit()
         elif ans=='a':
             pth=input('enter file name to add to database : ')
             with open(pth,'r',encoding='utf-8') as f:
@@ -52,10 +59,11 @@ def main():
                 changes+=f'Add {pth} to database[{cat}].\n'
                 input('new file added successfully\npress enter to continue ...')
         elif ans =='d':
-            if not funcs.areUsure():
+            """if not funcs.areUsure():
                 input('press enter to continue ...')
-                continue
+                continue"""
             database.dump()
+            changes=''
             input('ok\npress enter to continue ...')
         elif ans=='l':
             if changes=='':
