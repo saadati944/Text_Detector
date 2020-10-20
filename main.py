@@ -93,7 +93,7 @@ def main():
             print()
             for k in database.database.keys():
                 print(k)
-            print()
+            input('\npress enter to continue ...')
 
 
 if len(sys.argv)!=0:
